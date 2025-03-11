@@ -1,6 +1,5 @@
-// import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, Button, Image, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../components/header/Header";
 import Explore from "../components/home/Explore";
@@ -16,9 +15,18 @@ export default function Home() {
                     paddingBottom: 100,
                 }}>
                 <Explore />
-                <Rows title="Offers Near You!" />
-                <Rows title="Featured" />
-                <Rows title="Tasty Discounts!" />
+                <Rows 
+                    title="Offers Near You!"
+                    subTitle="Why not support your local restaurant tonight!"
+                />
+                <Rows 
+                    title="Featured" 
+                    subTitle="Paid placements from our partners"
+                />
+                <Rows 
+                    title="Tasty Discounts!" 
+                    subTitle="Paid placements from our partners"
+                />
             </ScrollView>
         </SafeAreaView>
     );

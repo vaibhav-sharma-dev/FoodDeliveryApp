@@ -10,7 +10,7 @@ export default function Rows(props) {
                 <View className="flex gap-1 flex-1">
                     <Text className="text-2xl font-bold">{props.title}</Text>
                     <Text className="text-gray-500">
-                        Why not support your local restaurant tonight!
+                        {props.subTitle}
                     </Text>
                 </View>
 
@@ -25,12 +25,45 @@ export default function Rows(props) {
                     paddingTop: 15,
                     paddingBottom: 15,
                 }}>
-                <DishCard />
-                <DishCard />
-                <DishCard />
-                <DishCard />
-                <DishCard />
-                <DishCard />
+                <DishCard
+                    imageUrl="https://links.papareact.com/gn7"
+                    restaurantName="Nando's"
+                    rating="4.8"
+                    location="Clink Street"
+                    // id
+                    // title
+                    // genre
+                    // address
+                    // short_description
+                    // dishes
+                    // long
+                    // lat
+                />
+                <DishCard
+                    imageUrl="https://links.papareact.com/gn7"
+                    restaurantName="Yo! Sushi"
+                    rating="4.8"
+                    location="Tottenhammer"
+                />
+                <DishCard
+                    imageUrl="https://links.papareact.com/gn7"
+                    restaurantName="KFC"
+                    rating="4.2"
+                    location="Waterloo"
+                />
+                <DishCard
+                    imageUrl="https://links.papareact.com/gn7"
+                    restaurantName="Nando's"
+                    rating="4.8"
+                    location="Clink Street"
+                />
+                <DishCard
+                    imageUrl="https://links.papareact.com/gn7"
+                    restaurantName="Wagamama"
+                    rating="5"
+                    location="Southbank"
+                />
+ 
             </ScrollView>
         </View>
     );
