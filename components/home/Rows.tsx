@@ -9,7 +9,9 @@ export default function Rows(props) {
             <View className="flex-row">
                 <View className="flex gap-1 flex-1">
                     <Text className="text-2xl font-bold">{props.title}</Text>
-                    <Text className="text-gray-500">Why not support your local restaurant tonight!</Text>
+                    <Text className="text-gray-500">
+                        Why not support your local restaurant tonight!
+                    </Text>
                 </View>
 
                 <ArrowRightIcon size={27} />
@@ -22,16 +24,14 @@ export default function Rows(props) {
                     // paddingHorizontal: 15,
                     paddingTop: 15,
                     paddingBottom: 15,
-                }}
-            >
-
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
+                }}>
+                <DishCard />
+                <DishCard />
+                <DishCard />
+                <DishCard />
+                <DishCard />
+                <DishCard />
             </ScrollView>
         </View>
-    )
+    );
 }
