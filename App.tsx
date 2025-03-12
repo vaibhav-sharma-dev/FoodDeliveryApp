@@ -134,9 +134,10 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import "./app.css";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "./screens/Home";
 import Profile from "./screens/Profile";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import RestaurantDetails from "./screens/RestaurantDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -147,6 +148,7 @@ export default function App() {
                 <Stack.Navigator>
                     <Stack.Screen name="Home" component={Home} />
                     <Stack.Screen name="Profile" component={Profile} />
+                    <Stack.Screen name="RestaurantDetails" component={RestaurantDetails} />
                 </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaProvider>

@@ -2,12 +2,18 @@ import React from "react";
 import { Image, TouchableOpacity, View, Text } from "react-native";
 import { StarIcon } from "react-native-heroicons/solid";
 import { MapPinIcon } from "react-native-heroicons/outline";
+import { useNavigation } from "@react-navigation/native";
 
+export default function RestaurantCard(props) {
+    const navigation = useNavigation();
 
-
-export default function DishCard(props) {
     return (
-        <TouchableOpacity className="pr-4 shadow-slate-400">
+        <TouchableOpacity 
+            className="pr-4 shadow-slate-400"
+            onPress={() => {
+                navigation.navigate("RestaurantDetails", {props})
+            }}
+        >
             <View className="rounded bg-white w-60 h-64 flex">
                 <Image
                     source={{

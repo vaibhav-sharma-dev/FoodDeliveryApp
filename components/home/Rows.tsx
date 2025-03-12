@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
-import DishCard from "./DishCard";
+import RestaurantCard from "./RestaurantCard";
 
 export default function Rows(props) {
     return (
@@ -25,7 +25,7 @@ export default function Rows(props) {
                     paddingTop: 15,
                     paddingBottom: 15,
                 }}>
-                <DishCard
+                <RestaurantCard
                     imageUrl="https://links.papareact.com/gn7"
                     restaurantName="Nando's"
                     rating="4.8"
@@ -39,25 +39,25 @@ export default function Rows(props) {
                     // long
                     // lat
                 />
-                <DishCard
+                <RestaurantCard
                     imageUrl="https://links.papareact.com/gn7"
                     restaurantName="Yo! Sushi"
                     rating="4.8"
                     location="Tottenhammer"
                 />
-                <DishCard
+                <RestaurantCard
                     imageUrl="https://links.papareact.com/gn7"
                     restaurantName="KFC"
                     rating="4.2"
                     location="Waterloo"
                 />
-                <DishCard
+                <RestaurantCard
                     imageUrl="https://links.papareact.com/gn7"
                     restaurantName="Nando's"
                     rating="4.8"
                     location="Clink Street"
                 />
-                <DishCard
+                <RestaurantCard
                     imageUrl="https://links.papareact.com/gn7"
                     restaurantName="Wagamama"
                     rating="5"
