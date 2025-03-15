@@ -15,16 +15,16 @@ export default function Home() {
                     paddingBottom: 100,
                 }}>
                 <Explore />
-                <Rows 
+                <Rows
                     title="Offers Near You!"
                     subTitle="Why not support your local restaurant tonight!"
                 />
-                <Rows 
-                    title="Featured" 
+                <Rows
+                    title="Featured"
                     subTitle="Paid placements from our partners"
                 />
-                <Rows 
-                    title="Tasty Discounts!" 
+                <Rows
+                    title="Tasty Discounts!"
                     subTitle="Paid placements from our partners"
                 />
             </ScrollView>

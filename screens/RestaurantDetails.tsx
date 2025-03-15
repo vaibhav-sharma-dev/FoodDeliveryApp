@@ -5,14 +5,16 @@ import RestaurantInfo from "../components/restaurant-details/RestaurantInfo";
 import RestaurantMenu from "../components/restaurant-details/RestaurantMenu";
 
 export default function RestaurantDetails() {
-    const {params} = useRoute();
+    const { params } = useRoute();
     const navigation = useNavigation();
 
     React.useLayoutEffect(() => {
-        navigation.setOptions({
-            headerShown: false,
-        }, [])
-    })
+        navigation.setOptions(
+            {
+                headerShown: false,
+            },
+        );
+    }, []);
 
     return (
         <ScrollView>
@@ -24,5 +26,5 @@ export default function RestaurantDetails() {
             />
             <RestaurantMenu />
         </ScrollView>
-    )
+    );
 }

@@ -8,12 +8,11 @@ export default function RestaurantCard(props) {
     const navigation = useNavigation();
 
     return (
-        <TouchableOpacity 
+        <TouchableOpacity
             className="pr-4 shadow-slate-400"
             onPress={() => {
-                navigation.navigate("RestaurantDetails", {props})
-            }}
-        >
+                navigation.navigate("RestaurantDetails", { props });
+            }}>
             <View className="rounded bg-white w-60 h-64 flex">
                 <Image
                     source={{

@@ -9,9 +9,7 @@ export default function Rows(props) {
             <View className="flex-row">
                 <View className="flex gap-1 flex-1">
                     <Text className="text-2xl font-bold">{props.title}</Text>
-                    <Text className="text-gray-500">
-                        {props.subTitle}
-                    </Text>
+                    <Text className="text-gray-500">{props.subTitle}</Text>
                 </View>
 
                 <ArrowRightIcon size={27} />
@@ -63,7 +61,6 @@ export default function Rows(props) {
                     rating="5"
                     location="Southbank"
                 />
- 
             </ScrollView>
         </View>
     );
