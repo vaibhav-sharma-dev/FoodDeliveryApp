@@ -1,8 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+export interface CartItem {
+  dishName: string;
+  quantity: number;
+}
+
 export interface CartState {
-  cartItems: Array<number>
+    cartItems: CartItem[];
 }
 
 const initialState: CartState = {
@@ -13,23 +18,35 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.cartItems.push()
+    addToCart: (state, action: PayloadAction<{dishName: string}>) => {
+        const {dishName} = action.payload;
+        const existingDish = state.cartItems.find((dish) => dish.dishName===dishName);
+
+        if (existingDish) {
+            existingDish.quantity += 1;
+        }
+
+        else {
+            state.cartItems.push({dishName, quantity: 1});
+        }
     },
-    decrement: (state) => {
-    //   state.cartItems -= 1
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-    //   state.cartItems += action.payload
-    },
+
+    removeFromCart: (state, action: PayloadAction<{dishName: string}>) => {
+        const {dishName} = action.payload;
+        const existingDish = state.cartItems.find((dish) => dish.dishName===dishName);
+
+        if (existingDish) {
+            if (existingDish.quantity>=1) {
+                existingDish.quantity -= 1;
+            }
+
+            else {
+                state.cartItems = state.cartItems.filter((item) => (item.dishName !== dishName));
+            }
+        }
+    }
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = cartSlice.actions
-
-export default cartSlice.reducer
+export const { addToCart, removeFromCart } = cartSlice.actions;
+export default cartSlice.reducer;

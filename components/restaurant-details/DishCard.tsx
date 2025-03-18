@@ -1,31 +1,54 @@
 import React from "react";
 import { Image, Pressable, Text, Vibration, View } from "react-native";
 import { StarIcon, PlusIcon, MinusIcon } from "react-native-heroicons/solid";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart, selectCartItems } from "../../features/cart/cartSlice";
 
-export default function DishCard() {
+export default function DishCard(props) {
+    interface CartItem {
+        dishName: string;
+        quantity: number;
+    }
+
     const [isAddButtonLongPressed, setIsAddButtonLongPresses] = React.useState(false);
+    const dispatch = useDispatch();
+    const cartItems = useSelector((state) => state.cart.cartItems);
+
+    const dish = cartItems.find((item: CartItem) => item.dishName===props.dishName)
+
+    const handleAddToCart = () => {
+        dispatch(addToCart({dishName: props.dishName}))
+    }
+
+    const handleRemoveFromCart = () => {
+        dispatch(removeFromCart({dishName: props.dishName}))
+    }
+
+    React.useEffect(() => {
+        console.log(cartItems, "cart")
+    }, [cartItems])
 
     return (
         <View>
             <View className="flex-row gap-1 border-b border-gray-300 mb-2">
                 <View className="w-2/3">
-                    <Text className="text-2xl font-bold mb-1">PERi-PERi Nuts</Text>
+                    <Text className="text-2xl font-bold mb-1">{props.dishName}</Text>
                     <Text className="text-gray-400 mb-1">
-                        Crunchy almonds, cashews and macagamia nuts in feary PERi-PERi seasoning. Serves 2-3.
+                        {props.description}
                     </Text>
                     <View className="text-lg font-extrabold flex-row gap-1 my-1">
                         <StarIcon className="h-3 w-3 text-yellow-400" />
                         <Text className="text-xl text-gray-400">
-                            4.5
+                            {props.rating}
                         </Text>
                     </View>
-                    <Text className="text-gray-600 text-lg font-bold mt-1 pb-4">₹ 250</Text>
+                    <Text className="text-gray-600 text-lg font-bold mt-1 pb-4">{props.price}</Text>
                 </View>
 
                 <View className="relative">
                     <Image
                         source={{
-                            uri: "https://links.papareact.com/gn9"
+                            uri: props.imageUrl
                         }}
                         className="w-36 h-32 rounded-xl"
                     />
@@ -42,13 +65,15 @@ export default function DishCard() {
                             isAddButtonLongPressed
                             ? (
                                 <View className="flex-row justify-between items-center py-1.5 px-2">
-                                    <Pressable onPress={null} hitSlop={10}>
+                                    <Pressable onPress={handleRemoveFromCart} hitSlop={10} disabled={!dish?.quantity}>
                                         <MinusIcon size={20} />
                                     </Pressable>
 
-                                    <Text className="font-bold text-xl">1</Text>
+                                    <Text className="font-bold text-xl">
+                                        {dish?.quantity ? dish?.quantity : 0}
+                                    </Text>
 
-                                    <Pressable onPress={null} hitSlop={10}>
+                                    <Pressable onPress={handleAddToCart} hitSlop={10}>
                                         <PlusIcon size={20} />
                                     </Pressable>
                                 </View>
