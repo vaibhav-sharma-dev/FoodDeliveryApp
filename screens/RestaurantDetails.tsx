@@ -3,6 +3,7 @@ import React from "react";
 import { ScrollView, Text, View } from "react-native";
 import RestaurantInfo from "../components/restaurant-details/RestaurantInfo";
 import RestaurantMenu from "../components/restaurant-details/RestaurantMenu";
+import CartIcon from "../components/common/CartIcon";
 
 export default function RestaurantDetails() {
     const { params } = useRoute();
@@ -17,14 +18,17 @@ export default function RestaurantDetails() {
     }, []);
 
     return (
+        <>
         <ScrollView>
             <RestaurantInfo
                 restaurantName={params?.props?.restaurantName}
                 imageUrl={params?.props?.imageUrl}
                 rating={params?.props?.rating}
                 location={params?.props?.location}
-            />
+                />
             <RestaurantMenu />
         </ScrollView>
+            <CartIcon />
+                </>
     );
 }

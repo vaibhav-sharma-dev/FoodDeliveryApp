@@ -2,12 +2,13 @@ import React from "react";
 import { Image, Pressable, Text, Vibration, View } from "react-native";
 import { StarIcon, PlusIcon, MinusIcon } from "react-native-heroicons/solid";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart, selectCartItems } from "../../features/cart/cartSlice";
+import { addToCart, removeFromCart } from "../../features/cart/cartSlice";
 
 export default function DishCard(props) {
     interface CartItem {
         dishName: string;
         quantity: number;
+        price: number;
     }
 
     const [isAddButtonLongPressed, setIsAddButtonLongPresses] = React.useState(false);
@@ -17,16 +18,12 @@ export default function DishCard(props) {
     const dish = cartItems.find((item: CartItem) => item.dishName===props.dishName)
 
     const handleAddToCart = () => {
-        dispatch(addToCart({dishName: props.dishName}))
+        dispatch(addToCart({dishName: props.dishName, price: props.price}))
     }
 
     const handleRemoveFromCart = () => {
-        dispatch(removeFromCart({dishName: props.dishName}))
+        dispatch(removeFromCart({dishName: props.dishName, price: props.price}))
     }
-
-    React.useEffect(() => {
-        console.log(cartItems, "cart")
-    }, [cartItems])
 
     return (
         <View>
@@ -36,13 +33,17 @@ export default function DishCard(props) {
                     <Text className="text-gray-400 mb-1">
                         {props.description}
                     </Text>
+
                     <View className="text-lg font-extrabold flex-row gap-1 my-1">
                         <StarIcon className="h-3 w-3 text-yellow-400" />
                         <Text className="text-xl text-gray-400">
                             {props.rating}
                         </Text>
                     </View>
-                    <Text className="text-gray-600 text-lg font-bold mt-1 pb-4">{props.price}</Text>
+
+                    <Text className="text-gray-600 text-lg font-bold mt-1 pb-4">
+                        ₹ {props.price}
+                    </Text>
                 </View>
 
                 <View className="relative">
