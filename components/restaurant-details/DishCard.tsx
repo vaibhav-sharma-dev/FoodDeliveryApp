@@ -11,25 +11,32 @@ export default function DishCard(props) {
         price: number;
     }
 
-    const [isAddButtonLongPressed, setIsAddButtonLongPresses] = React.useState(false);
+    const [isAddButtonLongPressed, setIsAddButtonLongPresses] =
+        React.useState(false);
     const dispatch = useDispatch();
-    const cartItems = useSelector((state) => state.cart.cartItems);
+    const cartItems = useSelector(state => state.cart.cartItems);
 
-    const dish = cartItems.find((item: CartItem) => item.dishName===props.dishName)
+    const dish = cartItems.find(
+        (item: CartItem) => item.dishName === props.dishName,
+    );
 
     const handleAddToCart = () => {
-        dispatch(addToCart({dishName: props.dishName, price: props.price}))
-    }
+        dispatch(addToCart({ dishName: props.dishName, price: props.price }));
+    };
 
     const handleRemoveFromCart = () => {
-        dispatch(removeFromCart({dishName: props.dishName, price: props.price}))
-    }
+        dispatch(
+            removeFromCart({ dishName: props.dishName, price: props.price }),
+        );
+    };
 
     return (
         <View>
             <View className="flex-row gap-1 border-b border-gray-300 mb-2">
                 <View className="w-2/3">
-                    <Text className="text-2xl font-bold mb-1">{props.dishName}</Text>
+                    <Text className="text-2xl font-bold mb-1">
+                        {props.dishName}
+                    </Text>
                     <Text className="text-gray-400 mb-1">
                         {props.description}
                     </Text>
@@ -49,41 +56,45 @@ export default function DishCard(props) {
                 <View className="relative">
                     <Image
                         source={{
-                            uri: props.imageUrl
+                            uri: props.imageUrl,
                         }}
                         className="w-36 h-32 rounded-xl"
                     />
 
-                    <Pressable 
+                    <Pressable
                         onLongPress={() => {
                             Vibration.vibrate(500);
-                            setIsAddButtonLongPresses(!isAddButtonLongPressed)
+                            setIsAddButtonLongPresses(!isAddButtonLongPressed);
                         }}
                         delayLongPress={300}
-                        className="bg-gray-200 absolute bottom-8 left-[12%] w-28 h-10 rounded-lg"
-                    >
-                        {
-                            isAddButtonLongPressed
-                            ? (
-                                <View className="flex-row justify-between items-center py-1.5 px-2">
-                                    <Pressable onPress={handleRemoveFromCart} hitSlop={10} disabled={!dish?.quantity}>
-                                        <MinusIcon size={20} />
-                                    </Pressable>
+                        className="bg-gray-200 absolute bottom-8 left-[12%] w-28 h-10 rounded-lg">
+                        {isAddButtonLongPressed ? (
+                            <View className="flex-row justify-between items-center py-1.5 px-2">
+                                <Pressable
+                                    onPress={handleRemoveFromCart}
+                                    hitSlop={10}
+                                    disabled={!dish?.quantity}>
+                                    <MinusIcon size={20} />
+                                </Pressable>
 
-                                    <Text className="font-bold text-xl">
-                                        {dish?.quantity ? dish?.quantity : 0}
-                                    </Text>
+                                <Text className="font-bold text-xl">
+                                    {dish?.quantity ? dish?.quantity : 0}
+                                </Text>
 
-                                    <Pressable onPress={handleAddToCart} hitSlop={10}>
-                                        <PlusIcon size={20} />
-                                    </Pressable>
-                                </View>
-                            )
-                            : <Text className="text-xl font-bold py-1.5 text-center">Add +</Text>
-                        }
+                                <Pressable
+                                    onPress={handleAddToCart}
+                                    hitSlop={10}>
+                                    <PlusIcon size={20} />
+                                </Pressable>
+                            </View>
+                        ) : (
+                            <Text className="text-xl font-bold py-1.5 text-center">
+                                Add +
+                            </Text>
+                        )}
                     </Pressable>
                 </View>
             </View>
         </View>
-    )
+    );
 }

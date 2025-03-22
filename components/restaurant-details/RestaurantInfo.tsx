@@ -25,8 +25,7 @@ export default function RestaurantInfo(props) {
                 onPress={() => {
                     navigation.goBack();
                 }}
-                hitSlop={15}
-            >
+                hitSlop={15}>
                 <ArrowLeftIcon size={30} />
             </Pressable>
 
@@ -56,10 +55,9 @@ export default function RestaurantInfo(props) {
                 specializes in flame-grilled peri-peri styled chicken.
             </Text>
 
-            <Pressable 
+            <Pressable
                 className="flex-row items-center p-4 border-y border-gray-300"
-                onPress={null}
-            >
+                onPress={null}>
                 <QuestionMarkCircleIcon color="gray" opacity={1} size={20} />
                 <Text className="pl-2 flex-1 text-md font-bold">
                     Have a food allergy?

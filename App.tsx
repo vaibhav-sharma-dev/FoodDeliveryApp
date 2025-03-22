@@ -14,19 +14,18 @@ const Stack = createNativeStackNavigator();
 export default function App() {
     return (
         <Provider store={store}>
-
-        <SafeAreaProvider>
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="Home" component={Home} />
-                    <Stack.Screen name="Profile" component={Profile} />
-                    <Stack.Screen
-                        name="RestaurantDetails"
-                        component={RestaurantDetails}
+            <SafeAreaProvider>
+                <NavigationContainer>
+                    <Stack.Navigator>
+                        <Stack.Screen name="Home" component={Home} />
+                        <Stack.Screen name="Profile" component={Profile} />
+                        <Stack.Screen
+                            name="RestaurantDetails"
+                            component={RestaurantDetails}
                         />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </SafeAreaProvider>
-                        </Provider>
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </SafeAreaProvider>
+        </Provider>
     );
 }
