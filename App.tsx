@@ -8,6 +8,7 @@ import Profile from "./screens/Profile";
 import RestaurantDetails from "./screens/RestaurantDetails";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import Cart from "./screens/Cart";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,10 +20,8 @@ export default function App() {
                     <Stack.Navigator>
                         <Stack.Screen name="Home" component={Home} />
                         <Stack.Screen name="Profile" component={Profile} />
-                        <Stack.Screen
-                            name="RestaurantDetails"
-                            component={RestaurantDetails}
-                        />
+                        <Stack.Screen name="RestaurantDetails" component={RestaurantDetails} />
+                        <Stack.Screen name="Cart" component={Cart} />
                     </Stack.Navigator>
                 </NavigationContainer>
             </SafeAreaProvider>
