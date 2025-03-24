@@ -3,6 +3,7 @@ import { Image, Pressable, Text, Vibration, View } from "react-native";
 import { StarIcon, PlusIcon, MinusIcon } from "react-native-heroicons/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../features/cart/cartSlice";
+import AddDishButton from "../common/AddDishButton";
 
 export default function DishCard(props) {
     interface CartItem {
@@ -21,13 +22,11 @@ export default function DishCard(props) {
     );
 
     const handleAddToCart = () => {
-        dispatch(addToCart({ dishName: props.dishName, price: props.price }));
+        dispatch(addToCart({ dishName: props.dishName, price: props.price, imageUrl: props.imageUrl }));
     };
 
     const handleRemoveFromCart = () => {
-        dispatch(
-            removeFromCart({ dishName: props.dishName, price: props.price }),
-        );
+        dispatch(removeFromCart({ dishName: props.dishName, price: props.price }));
     };
 
     return (
@@ -69,24 +68,11 @@ export default function DishCard(props) {
                         delayLongPress={300}
                         className="bg-gray-200 absolute bottom-8 left-[12%] w-28 h-10 rounded-lg">
                         {isAddButtonLongPressed ? (
-                            <View className="flex-row justify-between items-center py-1.5 px-2">
-                                <Pressable
-                                    onPress={handleRemoveFromCart}
-                                    hitSlop={10}
-                                    disabled={!dish?.quantity}>
-                                    <MinusIcon size={20} />
-                                </Pressable>
-
-                                <Text className="font-bold text-xl">
-                                    {dish?.quantity ? dish?.quantity : 0}
-                                </Text>
-
-                                <Pressable
-                                    onPress={handleAddToCart}
-                                    hitSlop={10}>
-                                    <PlusIcon size={20} />
-                                </Pressable>
-                            </View>
+                            <AddDishButton
+                                quantity={dish?.quantity}
+                                handleAddToCart={handleAddToCart}
+                                handleRemoveFromCart={handleRemoveFromCart}
+                            />
                         ) : (
                             <Text className="text-xl font-bold py-1.5 text-center">
                                 Add +

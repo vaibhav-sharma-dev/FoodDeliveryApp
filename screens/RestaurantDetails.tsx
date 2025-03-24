@@ -26,7 +26,7 @@ export default function RestaurantDetails() {
                 />
                 <RestaurantMenu />
             </ScrollView>
-            <CartIcon />
+            <CartIcon restaurantName={params?.props?.restaurantName} />
         </>
     );
 }

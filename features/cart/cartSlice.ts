@@ -5,6 +5,7 @@ export interface CartItem {
     dishName: string;
     quantity: number;
     price: number;
+    imageUrl: string;
 }
 
 export interface CartState {
@@ -21,9 +22,9 @@ export const cartSlice = createSlice({
     reducers: {
         addToCart: (
             state,
-            action: PayloadAction<{ dishName: string; price: number }>,
+            action: PayloadAction<{ dishName: string; price: number; imageUrl: string; }>,
         ) => {
-            const { dishName, price } = action.payload;
+            const { dishName, price, imageUrl } = action.payload;
             const priceInt = parseInt(price);
             const existingDish = state.cartItems.find(
                 dish => dish.dishName === dishName,
@@ -37,6 +38,7 @@ export const cartSlice = createSlice({
                     dishName,
                     quantity: 1,
                     price: priceInt,
+                    imageUrl: imageUrl,
                 });
             }
         },

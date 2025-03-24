@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Header from "../components/header/Header";
+import Header from "../components/home/Header";
 import Explore from "../components/home/Explore";
 import Rows from "../components/home/Rows";
 

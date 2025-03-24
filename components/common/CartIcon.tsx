@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { ShoppingCartIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 
-export default function CartIcon() {
+export default function CartIcon(props) {
     const navigation = useNavigation();
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalDishes = cartItems.reduce((sum, dish) => sum + dish.quantity, 0);
@@ -13,7 +13,7 @@ export default function CartIcon() {
         <View className="absolute bottom-10 w-full z-50">
             <TouchableOpacity 
                 className="w-[80%] h-16 bg-gray-200 border-black border mx-auto rounded-lg flex flex-row gap-2 px-4 items-center justify-center"
-                onPress={() => navigation.navigate("Cart")}
+                onPress={() => navigation.navigate("Cart", {props})}
             >
                 <View className="flex-1 flex-row gap-2 justify-center">
                     <ShoppingCartIcon className="text-gray-500" size={35} />
