@@ -22,11 +22,19 @@ export default function DishCard(props) {
     );
 
     const handleAddToCart = () => {
-        dispatch(addToCart({ dishName: props.dishName, price: props.price, imageUrl: props.imageUrl }));
+        dispatch(
+            addToCart({
+                dishName: props.dishName,
+                price: props.price,
+                imageUrl: props.imageUrl,
+            }),
+        );
     };
 
     const handleRemoveFromCart = () => {
-        dispatch(removeFromCart({ dishName: props.dishName, price: props.price }));
+        dispatch(
+            removeFromCart({ dishName: props.dishName, price: props.price }),
+        );
     };
 
     return (

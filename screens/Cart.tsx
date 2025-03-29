@@ -8,29 +8,31 @@ import CartItems from "../components/cart/CartItems";
 
 export default function Cart() {
     const navigation = useNavigation();
-    const {params} = useRoute();
+    const { params } = useRoute();
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
             presentaion: "modal",
             headerShown: false,
             slide_from_bottom: true,
-        })
-    }, [navigation])
+        });
+    }, [navigation]);
 
     return (
         <SafeAreaView>
             {/* <CartHeader restaurantName={params?.props.restaurantName} /> */}
             <View className="flex flex-row  justify-center bg-white px-4 py-6 rounded-lg">
-                            <View className="mr-auto">
-                                <Text className="text-3xl font-bold">Cart</Text>
-                                <Text className="text-gray-400 text-lg font-bold">{params?.props.restaurantName}</Text>
-                            </View>
-            
-                            <Pressable className="bg-gray-200 h-12 p-1 rounded-full">
-                                <XMarkIcon size={35} />
-                            </Pressable>
-                        </View>
+                <View className="mr-auto">
+                    <Text className="text-3xl font-bold">Cart</Text>
+                    <Text className="text-gray-400 text-lg font-bold">
+                        {params?.props.restaurantName}
+                    </Text>
+                </View>
+
+                <Pressable className="bg-gray-200 h-12 p-1 rounded-full">
+                    <XMarkIcon size={35} />
+                </Pressable>
+            </View>
 
             <Text>Cart Screen</Text>
             <Text>Cart Screen</Text>
@@ -43,5 +45,5 @@ export default function Cart() {
 
             <CartItems />
         </SafeAreaView>
-    )
+    );
 }

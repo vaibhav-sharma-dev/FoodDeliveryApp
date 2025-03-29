@@ -11,10 +11,9 @@ export default function CartIcon(props) {
 
     return (
         <View className="absolute bottom-10 w-full z-50">
-            <TouchableOpacity 
+            <TouchableOpacity
                 className="w-[80%] h-16 bg-gray-200 border-black border mx-auto rounded-lg flex flex-row gap-2 px-4 items-center justify-center"
-                onPress={() => navigation.navigate("Cart", {props})}
-            >
+                onPress={() => navigation.navigate("Cart", { props })}>
                 <View className="flex-1 flex-row gap-2 justify-center">
                     <ShoppingCartIcon className="text-gray-500" size={35} />
                     <Text className="text-2xl font-semibold align-middle">

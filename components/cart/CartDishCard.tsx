@@ -8,17 +8,27 @@ export default function CartDishCard(props) {
     const dispatch = useDispatch();
 
     const handleAddToCart = () => {
-        dispatch(addToCart({ dishName: props.dishName, price: props.price, imageUrl: props.imageUrl }));
+        dispatch(
+            addToCart({
+                dishName: props.dishName,
+                price: props.price,
+                imageUrl: props.imageUrl,
+            }),
+        );
     };
 
     const handleRemoveFromCart = () => {
-        dispatch(removeFromCart({ dishName: props.dishName, price: props.price }));
+        dispatch(
+            removeFromCart({ dishName: props.dishName, price: props.price }),
+        );
     };
 
     return (
-        <View key={props.id} className="flex flex-row items-center justify-between gap-2 bg-white px-4 py-2 border-y border-gray-200">
+        <View
+            key={props.id}
+            className="flex flex-row items-center justify-between gap-2 bg-white px-4 py-2 border-y border-gray-200">
             <View className="flex flex-row gap-4 items-center w-3/5">
-                <Image 
+                <Image
                     source={{
                         uri: props.imageUrl,
                     }}
@@ -31,12 +41,10 @@ export default function CartDishCard(props) {
             </View>
 
             <View className="flex flex-row gap-2 items-center">
-                <Text className="text-lg text-gray-400">
-                    ₹ {props.price}
-                </Text>
-                
+                <Text className="text-lg text-gray-400">₹ {props.price}</Text>
+
                 <View className="bg-gray-200 rounded-lg w-28 h-10 ">
-                    <AddDishButton 
+                    <AddDishButton
                         quantity={props?.quantity}
                         handleAddToCart={handleAddToCart}
                         handleRemoveFromCart={handleRemoveFromCart}
@@ -44,5 +52,5 @@ export default function CartDishCard(props) {
                 </View>
             </View>
         </View>
-    )
+    );
 }

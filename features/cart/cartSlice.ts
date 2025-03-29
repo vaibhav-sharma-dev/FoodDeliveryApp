@@ -22,7 +22,11 @@ export const cartSlice = createSlice({
     reducers: {
         addToCart: (
             state,
-            action: PayloadAction<{ dishName: string; price: number; imageUrl: string; }>,
+            action: PayloadAction<{
+                dishName: string;
+                price: number;
+                imageUrl: string;
+            }>,
         ) => {
             const { dishName, price, imageUrl } = action.payload;
             const priceInt = parseInt(price);
