@@ -9,6 +9,8 @@ export default function CartIcon(props) {
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalDishes = cartItems.reduce((sum, dish) => sum + dish.quantity, 0);
 
+    if (cartItems.length === 0) return null;
+
     return (
         <View className="absolute bottom-10 w-full z-50">
             <TouchableOpacity

@@ -5,6 +5,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { XMarkIcon } from "react-native-heroicons/outline";
 import CartHeader from "../components/cart/CartHeader";
 import CartItems from "../components/cart/CartItems";
+import CartTotal from "../components/cart/CartTotal";
+import CartDeliveryInfo from "../components/cart/CartDeliveryInfo";
 
 export default function Cart() {
     const navigation = useNavigation();
@@ -20,30 +22,10 @@ export default function Cart() {
 
     return (
         <SafeAreaView>
-            {/* <CartHeader restaurantName={params?.props.restaurantName} /> */}
-            <View className="flex flex-row  justify-center bg-white px-4 py-6 rounded-lg">
-                <View className="mr-auto">
-                    <Text className="text-3xl font-bold">Cart</Text>
-                    <Text className="text-gray-400 text-lg font-bold">
-                        {params?.props.restaurantName}
-                    </Text>
-                </View>
-
-                <Pressable className="bg-gray-200 h-12 p-1 rounded-full">
-                    <XMarkIcon size={35} />
-                </Pressable>
-            </View>
-
-            <Text>Cart Screen</Text>
-            <Text>Cart Screen</Text>
-            <Text>Cart Screen</Text>
-            <Text>Cart Screen</Text>
-            <Text>Cart Screen</Text>
-            <Text>Cart Screen</Text>
-            <Text>Cart Screen</Text>
-            <Text>Cart Screen</Text>
-
+            <CartHeader restaurantName={params?.props.restaurantName} />
+            <CartDeliveryInfo />
             <CartItems />
+            <CartTotal />
         </SafeAreaView>
     );
 }

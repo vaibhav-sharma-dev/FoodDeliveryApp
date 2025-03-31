@@ -7,7 +7,7 @@ export default function CartItems() {
     const cartItems = useSelector(state => state.cart.cartItems);
     console.log(cartItems);
     return (
-        <ScrollView>
+        <ScrollView className="h-[53%]">
             {cartItems.map((cartItem, index) => (
                 <CartDishCard
                     id={index}
