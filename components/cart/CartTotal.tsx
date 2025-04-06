@@ -4,20 +4,13 @@ import { Pressable, Text, Vibration, View } from "react-native";
 import { useSelector } from "react-redux";
 
 export default function CartTotal() {
-    const cartItems = useSelector(state => state.cart.cartItems);
+    const {deliveryCharge, totalPrice} = useSelector(state => state.cart);
     const navigation = useNavigation();
-    const [totalPrice, setTotalPrice] = React.useState(0);
-    const [orderTotal, setOrderTotal] = React.useState(70);
-    let calculatePrice = 0;
+    const [subTotalPrice, setSubTotalPrice] = React.useState(0);
 
-    for (let item of cartItems) {
-        calculatePrice += item.price;
-    }
-    
     React.useEffect(() => {
-        setTotalPrice(calculatePrice);
-        setOrderTotal((prev) => prev + totalPrice);
-    }, [totalPrice])
+        setSubTotalPrice(totalPrice - deliveryCharge);
+    }, [subTotalPrice, totalPrice])
 
     return (
         <View className="bg-white rounded-lg py-4 px-4 border-y border-gray-200 shadow">
@@ -28,9 +21,9 @@ export default function CartTotal() {
                     <Text className="text-lg font-semibold">Order Total</Text>
                 </View>
                 <View className="flex gap-2">
-                    <Text className="text-lg">₹ {totalPrice}</Text>
-                    <Text className="text-lg">₹ 70</Text>
-                    <Text className="text-lg font-semibold">₹ {orderTotal}</Text>
+                    <Text className="text-lg">₹ {subTotalPrice}</Text>
+                    <Text className="text-lg">₹ {deliveryCharge}</Text>
+                    <Text className="text-lg font-semibold">₹ {totalPrice}</Text>
                 </View>
             </View>
 

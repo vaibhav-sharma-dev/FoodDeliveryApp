@@ -32,7 +32,7 @@ export default function PreparingOrder() {
                 iterationCount={1}
                 className="text-xl font-semibold w-1/2 text-center pt-4"
             >
-                Waiting for Restaurant to accept your Order!
+                Waiting for the Restaurant to accept your Order!
             </Animatable.Text>
         </SafeAreaView>
     )

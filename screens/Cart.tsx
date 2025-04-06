@@ -1,8 +1,7 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
-import { Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { XMarkIcon } from "react-native-heroicons/outline";
+// import LottieView from "lottie-react-native";
 import CartHeader from "../components/cart/CartHeader";
 import CartItems from "../components/cart/CartItems";
 import CartTotal from "../components/cart/CartTotal";
@@ -23,6 +22,12 @@ export default function Cart() {
     return (
         <SafeAreaView>
             <CartHeader restaurantName={params?.props.restaurantName} />
+            {/* <LottieView 
+                style={{width: 300, height: 300}}
+                autoPlay
+                loop
+                source={require("../assets/images/EmptyCartAnimation.json")}
+            /> */}
             <CartDeliveryInfo />
             <CartItems />
             <CartTotal />

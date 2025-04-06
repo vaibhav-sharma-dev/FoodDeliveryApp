@@ -5,7 +5,7 @@ import { ScrollView } from "react-native";
 
 export default function CartItems() {
     const cartItems = useSelector(state => state.cart.cartItems);
-    console.log(cartItems);
+
     return (
         <ScrollView className="h-[53%]">
             {cartItems.map((cartItem, index) => (

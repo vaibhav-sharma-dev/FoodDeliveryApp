@@ -10,10 +10,14 @@ export interface CartItem {
 
 export interface CartState {
     cartItems: CartItem[];
+    deliveryCharge: number;
+    totalPrice: number;
 }
 
 const initialState: CartState = {
     cartItems: [],
+    deliveryCharge: 70,
+    totalPrice: 70,
 };
 
 export const cartSlice = createSlice({
@@ -46,6 +50,8 @@ export const cartSlice = createSlice({
                     imageUrl: imageUrl,
                 });
             }
+
+            state.totalPrice += priceInt;
         },
 
         removeFromCart: (
@@ -68,6 +74,8 @@ export const cartSlice = createSlice({
                         item => item.dishName !== dishName,
                     );
                 }
+
+                state.totalPrice -= priceInt;
             }
         },
 
@@ -82,6 +90,7 @@ export const cartSlice = createSlice({
                 existingDish.price +=
                     existingDish.price / existingDish.quantity;
                 existingDish.quantity += 1;
+                state.totalPrice += existingDish.price / existingDish.quantity;
             }
         },
 
@@ -105,6 +114,8 @@ export const cartSlice = createSlice({
                         item => item.dishName !== dishName,
                     );
                 }
+
+                state.totalPrice -= existingDish.price / existingDish.quantity;
             }
         },
     },
